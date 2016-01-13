@@ -1,29 +1,28 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Subscription -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Subscription %></h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @subscription.title %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @subscription.title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sub_user_count) %></dt>
+      <dd><pre class="prettyprint"><%= @subscription.sub_user_count %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @subscription.description %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Sub user count:</strong>
-  <%= @subscription.sub_user_count %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              subscriptions_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_subscription_path(@subscription), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              subscription_path(@subscription),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @subscription.category %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @subscription.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @subscription.user %>
-</p>
-
-<%= link_to 'Edit', edit_subscription_path(@subscription) %> |
-<%= link_to 'Back', subscriptions_path %>
