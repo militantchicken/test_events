@@ -1,0 +1,16 @@
+<%= simple_form_for(@event) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :subscription %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :mod %>
+    <%= f.input :event_start %>
+    <%= f.input :event_end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
