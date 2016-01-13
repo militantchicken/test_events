@@ -1,0 +1,29 @@
+<h1>Listing user_subs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Subscription</th>
+      <th>Moderator</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_subs.each do |user_sub| %>
+      <tr>
+        <td><%= user_sub.user %></td>
+        <td><%= user_sub.subscription %></td>
+        <td><%= user_sub.moderator %></td>
+        <td><%= link_to 'Show', user_sub %></td>
+        <td><%= link_to 'Edit', edit_user_sub_path(user_sub) %></td>
+        <td><%= link_to 'Destroy', user_sub, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User sub', new_user_sub_path %>
