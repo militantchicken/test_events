@@ -1,29 +1,36 @@
-<h1>Listing user_subs</h1>
-
-<table>
+<%- model_class = UserSub -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => UserSub %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Subscription</th>
-      <th>Moderator</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:moderator) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @user_subs.each do |user_sub| %>
       <tr>
-        <td><%= user_sub.user %></td>
-        <td><%= user_sub.subscription %></td>
+        <td><%= user_sub.id %></td>
         <td><%= user_sub.moderator %></td>
-        <td><%= link_to 'Show', user_sub %></td>
-        <td><%= link_to 'Edit', edit_user_sub_path(user_sub) %></td>
-        <td><%= link_to 'Destroy', user_sub, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l user_sub.created_at, format: :long %></td>
+        <td>
+          <%= link_to user_sub_path(user_sub), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to user_sub_path(user_sub), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New User sub', new_user_sub_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_user_sub_path,
+            :class => 'btn btn-primary' %>
