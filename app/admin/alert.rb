@@ -1,4 +1,5 @@
 ActiveAdmin.register Alert do
+  permit_params :alert_time
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
