@@ -1,4 +1,5 @@
 ActiveAdmin.register UserSub do
+  permit_params :moderator
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
