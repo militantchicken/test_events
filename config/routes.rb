@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :alerts
+
   resources :categories
 
   resources :user_subs
